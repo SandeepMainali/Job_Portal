@@ -47,7 +47,7 @@ public class UpdateJobServlet extends HttpServlet{
 			boolean f=dao.updateJob(j);
 			if(f) {
 				
-				session.setAttribute("succMSg","Job Post Successfully..");
+				session.setAttribute("succMSg","Job Post Update Successfully..");
 				resp.sendRedirect("view_jobs.jsp");
 				
 			}

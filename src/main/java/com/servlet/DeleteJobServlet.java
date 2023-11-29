@@ -28,7 +28,7 @@ public class DeleteJobServlet extends HttpServlet{
 			
 			if(f) {
 				
-				session.setAttribute("succMSg","Job Post Successfully..");
+				session.setAttribute("succMSg","Job Post Delete Successfully..");
 				resp.sendRedirect("view_jobs.jsp");
 				
 			}

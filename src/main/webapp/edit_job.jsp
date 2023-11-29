@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ page isELIgnored="false" %>
  <%@ page import="com.dao.JobDao" %>
 <%@ page import="com.DB.DBconnect" %>
@@ -11,11 +11,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+
+	
 <title>Edit Jobs</title>
 <%@include file="all_component/all_css.jsp" %>
 
 </head>
 <body style="background-color: #fof1f2;">
+<c:if test="${userobj.role ne 'admin'}">
+    <c:redirect url="login.jsp" />
+</c:if>
 <%@include file="all_component/navbar.jsp" %>
 
 <div class="container p-2">
@@ -24,6 +30,8 @@
 			<div class="card-body">
 				<div class="text-center text-success">
 				<i class="fas fa-user-friends fa-3x"></i>
+				
+	
 				
 				<%
 				
@@ -38,6 +46,7 @@
 				<h5>Edit Jobs</h5>
 				</div>
 				<form action="update" method="post">
+	
 				<input type ="hidden" value="<%=j.getId() %>" name="id">
 				
 					<div class="form-group">
@@ -46,7 +55,7 @@
 					<div class="form-row">
 					<div class="form-group col-md-4">
 					<label>Location</label> <select name="location" class="custom-select" id="inlineFormCustomSelectPref">
-					<option value="<%=j.getLocation() %>>"><%=j.getLocation() %></option>
+					<option value="<%=j.getLocation() %>"><%=j.getLocation() %></option>
 					<option value ="Kathmandu">Kathmandu</option>
 					<option value ="Bhaktapur">Bhaktapur</option>
 					<option value ="Lalitpur">Lalitpur</option>
@@ -58,7 +67,7 @@
 					
 					<div class="form-group col-md-4">
 					<label>Category</label> <select name="category" class="custom-select" id="inlineFormCustomSelectPref">
-					<option value="<%=j.getCategory() %>>"><%=j.getCategory() %></option>
+					<option value="<%=j.getCategory() %>"><%=j.getCategory() %></option>
 					<option value ="FullStackDeveloper">FullStackDeveloper</option>
 					<option value ="FrontEndDeveloper">FrontEndDeveloper</option>
 					<option value ="BackEndDeveloper">BackEndDeveloper</option>
@@ -81,7 +90,7 @@
 					
 					<div class="form-group">
 					<label>Enter Description</label>
-					<textarea required rows="6" cols="" name="desc" class="form-control"><%=j.getDescription() %>></textarea>
+					<textarea required rows="6" cols="" name="desc" class="form-control"><%=j.getDescription() %></textarea>
 					</div>
 					<button class="btn btn-success">Update Job</button>
 					

@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ page isELIgnored="false" %>
+  <%@ page import="com.entity.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,9 @@
 
 </head>
 <body style="background-color: #fof1f2;">
+<c:if test="${userobj.role ne 'admin'}">
+    <c:redirect url="login.jsp" />
+</c:if>
 <%@include file="all_component/navbar.jsp" %>
 
 <div class="container p-2">
@@ -22,10 +25,12 @@
 				<div class="text-center text-success">
 				<i class="fas fa-user-friends fa-3x"></i>
 				
-			<%-- 	<c:if test="${ not empty SuccMsg}">
-				<div class="alert alert-success" role="alert">${ succMSg }</div>
-					<c:remove var ="succMSg"/>
-					</c:if> --%>
+			<c:if test="${not empty succMSg}">
+    <div class="alert alert-success" role="alert">${succMSg}</div>
+    <%-- Display your success message here --%>
+    <c:remove var="succMSg"/>
+</c:if>
+			
 		
 				<h5>Add Jobs</h5>
 				</div>
