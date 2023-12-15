@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +22,12 @@
 			<div class="text-center">
 	<i class="fa-solid fa-user-plus"></i>
 			<h5>SignUp Page</h5>
+			
+						<c:if test="${not empty succMSg}">
+    <div class="alert alert-success" role="alert">${succMSg}</div>
+    <%-- Display your success message here --%>
+    <c:remove var="succMSg"/>
+</c:if>
 			</div>
 			<form action="register" method="post">
 			

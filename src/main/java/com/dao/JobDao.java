@@ -85,6 +85,40 @@ public class JobDao {
 	
 	
 	
+	
+	public List<jobs> getAllJobsForUser(){
+		List<jobs> list =new ArrayList<jobs>();
+	
+		jobs j =null;
+		try {
+			
+			
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM job_portal.jobs where status=? ORDER BY id DESC");
+			ps.setString(1,"Active");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				j = new jobs();
+				j.setId(rs.getInt(1));
+				j.setTitle(rs.getString(2));
+				j.setDescription(rs.getString(3));
+				j.setCategory(rs.getString(4));
+				j.setStatus(rs.getString(5));
+				j.setLocation(rs.getString(6));
+				j.setPdate(rs.getTimestamp(7)+"");
+				
+				list.add(j);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
+	
+	
 	public jobs getJobById(int id) {
 	    jobs j = null;
 	    try {
@@ -163,10 +197,85 @@ boolean f= false;
 		return f;
 		
 	}
-	
-	
-	
-	
-	
 
+//	public Object getId() {
+//		return id;
+//	}
+//
+//	public void setId(Object id) {
+//		this.id = id;
+//	}
+
+
+
+public List <jobs> getjobsORLocationAndCate(String category,String location){
+	List<jobs> list =new ArrayList<jobs>();
+	jobs j =null;
+	try {
+		String sql = "select * from job_portal.jobs where category=? or location=? order by id DESC ";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1,category);
+		ps.setString(2,location);
+		
+		ResultSet rs =ps.executeQuery();
+		while(rs.next()) {
+			j= new jobs();
+			
+			j.setId(rs.getInt(1));
+			j.setTitle(rs.getString(2));
+			j.setDescription(rs.getString(3));
+			j.setCategory(rs.getString(4));
+			j.setStatus(rs.getString(5));
+			j.setLocation(rs.getString(6));
+			j.setPdate(rs.getTimestamp(7)+"");
+			
+			list.add(j);
+			
+		}
+		
+		
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+
+
+
+
+public List <jobs> getjobsAndLocationAndCate(String category,String location){
+	List<jobs> list =new ArrayList<jobs>();
+	jobs j =null;
+	try {
+		String sql = "select * from job_portal.jobs where category=? And location=? order by id DESC ";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1,category);
+		ps.setString(2,location);
+		
+		ResultSet rs =ps.executeQuery();
+		while(rs.next()) {
+			j= new jobs();
+			
+			j.setId(rs.getInt(1));
+			j.setTitle(rs.getString(2));
+			j.setDescription(rs.getString(3));
+			j.setCategory(rs.getString(4));
+			j.setStatus(rs.getString(5));
+			j.setLocation(rs.getString(6));
+			j.setPdate(rs.getTimestamp(7)+"");
+			
+			list.add(j);
+			
+		}
+		
+		
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}	
+	
+	
 }

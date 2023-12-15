@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.DB.DBconnect;
 import com.entity.User;
+import com.dao.UserDao;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -32,7 +34,21 @@ public class LoginServlet extends HttpServlet {
 
 			} else {
 
-				resp.sendRedirect("login.jsp?error=invalid"); 
+				UserDao dao = new UserDao(DBconnect.getConn());
+				User user =dao.login(em,ps);
+				if(user!=null) {
+					session.setAttribute("userobj",user);
+					resp.sendRedirect("home.jsp");
+					
+
+					
+					
+				}
+				else {
+					session.setAttribute("succMsg","Invalid Email and Password");
+					resp.sendRedirect("login.jsp");
+					
+				}
 
 			}
 

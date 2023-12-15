@@ -57,8 +57,10 @@
 					<option selected>Choose...</option>
 					<option value ="FullStackDeveloper">FullStackDeveloper</option>
 					<option value ="FrontEndDeveloper">FrontEndDeveloper</option>
-					<option value ="BackEndDeveloper">BackEndDeveloper</option>
-					<option value ="JavaDeveloper">JavaDeveloper</option>
+					<option value ="UI/UX Designer">UI/UX Designer</option>
+					<option value ="QA">QA</option>
+					<option value ="Java Developer">Java Developer</option>
+					<option value ="WebDeveloper">WebDeveloper</option>
 					</select>
 					</div>
 					

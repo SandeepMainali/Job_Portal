@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  isELIgnored="false"%>
 <%@ page import="com.dao.JobDao" %>
 <%@ page import="com.DB.DBconnect" %>
 <%@ page import="com.entity.jobs" %>
 <%@ page import="java.util.List" %>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ page isELIgnored="false" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ page import="com.entity.User" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +22,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h5 class="text-center text-primary">All Jobs</h5>
-                							<c:if test="${not empty succMSg}">
+    <c:if test="${not empty succMSg}">
     <div class="alert alert-success" role="alert">${succMSg}</div>
     <%-- Display your success message here --%>
     <c:remove var="succMSg"/>
