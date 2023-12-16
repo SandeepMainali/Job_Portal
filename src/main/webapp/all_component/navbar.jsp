@@ -46,7 +46,8 @@
 	<c:if test="${empty userobj }">
 	<a href="login.jsp" class="btn btn-light mr-1"><i class="fas fa-sign-in-alt"></i>Login</a>
 	
-	<a href="signup.jsp" class="btn btn-light"><i class="fas fa-user"></i>SignUp</a>
+	<a href="signup.jsp" class="btn btn-light mr-1"><i class="fas fa-user"></i>SignUp</a>
+	<a href="login.jsp" class="btn btn-light"><i class="fas fa-user"></i>Admin</a>
 	</c:if>
 
 
