@@ -72,16 +72,42 @@ public class UserDao {
 		return u;
 		
 	}
+
+	public boolean updateUser(User u) {
+		
+		   boolean f = false;
+		    try {
+		    	String sql = "update job_portal.users set name=?,email=?,password=?,qualification=? where id=?";
+		        PreparedStatement ps = conn.prepareStatement(sql);
+		        ps.setString(1, u.getName());
+		        ps.setString(2, u.getEmail());
+		        ps.setString(3, u.getPassword());
+		        ps.setString(4, u.getQualification());
+		        ps.setInt(5,u.getId());
+		        
+		        
+		        int i = ps.executeUpdate();
+		        
+		        if (i==1) {
+		            f = true;
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
 		
 		
 		
 		
 		
 		
-		
-		
-		
+		return false;
 	}
+		
+	
+	
+	
+	
+}
 
 
 
